@@ -7,12 +7,10 @@ def main():
     phone1 = Phone(1, 'Samsung', 'Galaxy Note 7')
     phone2 = Phone(2, 'Samsung', 'Galaxy S III')
     phone3 = Phone(3, 'Samsung', 'Galaxy A7')
-    phone4 = Phone(2, 'Samsung', 'Galaxy B8') # Un-comment this to throw the add_phone Exception.
 
     assignments.add_phone(phone1)
     assignments.add_phone(phone2)
     assignments.add_phone(phone3)
-    assignments.add_phone(phone4)  # Un-comment this to throw the add_phone Exception.
 
     employee1 = Employee(1, 'Alice')
     employee2 = Employee(2, 'Bill')
@@ -35,8 +33,26 @@ def main():
     assignments.assign(phone3.id, employee3)   # Assign phone 3 to employee 3
     assignments.assign(phone2.id, employee3)   # Reassign phone 3 to employee3. TODO this should fail; employee3 should not be able to have two phones
 
-    for i in assignments.phones:
-        print(i)
+    ''' This are the #TODO  list and need to be uncommented for to test the program '''
+
+            # add_employee -- This will throw an exception because the id is already in list.
+    # employee2 = Employee(2, 'James')
+    # assignments.add_employee(employee2)
+    # for employee in assignments.employees:
+    #     print(employee)
+
+            # add_phone -- This phone ID is already in list and will throw an Exception.
+    # phone4 = Phone(2, 'Samsung', 'Galaxy B8')
+    # assignments.add_phone(phone4)
+
+            # assign -- Assign phone 1 to employee 2. This will throw an Exception.
+    # assignments.assign(phone1.id, employee2)
+            # assign This will throw an exception because employee already has a phone.
+    # assignments.assign(phone1.id, employee3)
+
+            # This doesn't throw an exception.
+    print(assignments.phone_info(employee3))
+
 
 if __name__ == '__main__':
     main()
