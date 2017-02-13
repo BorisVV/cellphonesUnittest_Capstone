@@ -71,9 +71,7 @@ class PhoneAssignments():
 
     def assign(self, phone_id, employee):
         # Find phone in phones list
-        if self.phones.__contains__(phone_id):
-            raise PhoneError('No ID')
-            
+        
         for phone in self.phones:
             if phone.id == phone_id:
                 # TODO if phone is already assigned to an employee, do not change list, throw exception
