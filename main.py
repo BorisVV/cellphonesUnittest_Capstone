@@ -34,24 +34,24 @@ def main():
     assignments.assign(phone2.id, employee3)   # Reassign phone 3 to employee3. TODO this should fail; employee3 should not be able to have two phones
 
     ''' This are the #TODO  list and need to be uncommented for to test the program '''
-
-            # add_employee -- This will throw an exception because the id is already in list.
+    
+    #         ## add_employee -- This will throw an exception because the id is already in list.
     # employee2 = Employee(2, 'James')
     # assignments.add_employee(employee2)
-    # for employee in assignments.employees:
-    #     print(employee)
-
-            # add_phone -- This phone ID is already in list and will throw an Exception.
-    # phone4 = Phone(2, 'Samsung', 'Galaxy B8')
+    #
+    #         ## add_phone -- This phone ID is already in list and will throw an Exception.
+    # phone4 = Phone(1, 'Samsung', 'Galaxy B8')
     # assignments.add_phone(phone4)
-
-            # assign -- Assign phone 1 to employee 2. This will throw an Exception.
+    #
+    #         ## assign -- Assign phone 1 to employee 2. This will throw an Exception.
     # assignments.assign(phone1.id, employee2)
-            # assign This will throw an exception because employee already has a phone.
+    #         ## assign This will throw an exception because employee already has a phone.
     # assignments.assign(phone1.id, employee3)
-
-            # This doesn't throw an exception.
-    print(assignments.phone_info(employee3))
+    #
+    #         ## This doesn't throw an exception.
+    # print(assignments.phone_info(employee3))
+    #
+    # print(assignments.phone_info(Employee(20, 'Name')))
 
 
 if __name__ == '__main__':
