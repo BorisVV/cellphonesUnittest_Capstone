@@ -71,25 +71,29 @@ class PhoneAssignments():
 
     def assign(self, phone_id, employee):
         # Find phone in phones list
-
+        isGoodToAssign = True
         for phone in self.phones:
             if phone.id == phone_id:
                 # TODO if phone is already assigned to an employee, do not change list, throw exception
                 if phone.employee_id == employee:
+                    isGoodToAssign = False
                     raise PhoneError('\n\tPhone is already assigned to this employee ID# {}'.format(employee.id))
                     break
-                # TODO if employee already has a phone, do not change list, and throw exception
-                elif phone.employee_id != None:
+
+                 # TODO if employee already has a phone, do not change list, and throw exception
+                if phone.employee_id != None:
+                    isGoodToAssign = False
                     raise PhoneError('\n\tThis employee ID# {} already has a phone with ID# {}'.format(phone.employee_id, phone.id))
                     break
 
-                elif phone.id == phone_id and phone.employee_id != None:
-                    raise PhoneError('\n\tThis Phone ID# {} already has been assigned to ID# {}'.format(phone.id, employee.id))
+                 # TODO if employee already has this phone, don't make any changes. This should NOT throw an exception.
+                if phone.id == phone_id and phone.employee_id != None:
+                    isGoodToAssign = False
                     break
 
-                # TODO if employee already has this phone, don't make any changes. This should NOT throw an exception.
-                phone.assign(employee)
-                return
+                elif isGoodToAssign:
+                    phone.assign(employee.id)
+                    return
 
 
     def un_assign(self, phone_id):
@@ -103,19 +107,18 @@ class PhoneAssignments():
         # find phone for employee in phones list
 
         # TODO  should return None if the employee does not have a phone
-        isIn = False
-        for employeeIn in self.employees:
-            if employeeIn.id == employee.id:
-                isIn == True
-                for phone in self.phones:
-                    if phone.employee_id == employee.id:
-                        return phone
-                    elif phone.employee_id != employee.id:
-                        return None
+
+        if employee not in self.employees:
+            raise PhoneError('\n\t EMPLOYEE ID# {} DOESN\'T EXIST'.format(employee.id))
+
+        else:
+            for phone in self.phones:
+                if phone.employee_id == employee.id:
+                    return phone
+
+            return None
 
         # TODO  the method should throw an exception if the employee does not exist
-        if isIn == False:
-            raise PhoneError('\n\t EMPLOYEE ID# {} DOESN\'T EXIST'.format(employee.id))
 
 
 # This class just pass, because what we need is just the Exception.
