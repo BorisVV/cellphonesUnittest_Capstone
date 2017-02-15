@@ -50,7 +50,7 @@ class PhoneAssignments():
         for empl in self.employees:
             if empl.id == employee.id:
                 isId_inList = True
-                raise PhoneError('\n\tThis Employee ID# {} is already in list. Update ID#'.format(employee.id))
+                raise PhoneError('\n\tEmployee ID# {} is already in list. Update ID#'.format(employee.id))
                 break
         if isId_inList == False:
             self.employees.append(employee)
@@ -63,7 +63,7 @@ class PhoneAssignments():
         for phones in self.phones:
             if phones.id == phone.id: # Checks if the id is in the list of phones.
                 isId_inList = True
-                raise PhoneError("\n\tThis Phone with ID# {} CAN'T BE REPEATED ALREADY IN LIST".format(phone.id))
+                raise PhoneError("\n\tPhone with ID# {} CAN'T BE REPEATED, ALREADY IN LIST".format(phone.id))
                 break
         if isId_inList == False: # the new phone gets added.
             self.phones.append(phone)
@@ -80,13 +80,13 @@ class PhoneAssignments():
                     raise PhoneError('\n\tPhone is already assigned to this employee ID# {}'.format(employee.id))
                     break
 
-                 # TODO if employee already has a phone, do not change list, and throw exception
+                # TODO if employee already has a phone, do not change list, and throw exception
                 if phone.employee_id != None:
                     isGoodToAssign = False
-                    raise PhoneError('\n\tThis employee ID# {} already has a phone with ID# {}'.format(phone.employee_id, phone.id))
+                    raise PhoneError('\n\tEmployee ID# {} already has a phone with ID# {}'.format(phone.employee_id, phone.id))
                     break
 
-                 # TODO if employee already has this phone, don't make any changes. This should NOT throw an exception.
+                # TODO if employee already has this phone, don't make any changes. This should NOT throw an exception.
                 if phone.id == phone_id and phone.employee_id != None:
                     isGoodToAssign = False
                     break

@@ -44,8 +44,6 @@ class TestPhoneManager(unittest.TestCase):
         testAssigmentMgr = PhoneAssignments()
         self.assertTrue(len(testAssigmentMgr.employees) == 0, 'No an empty list')
 
-        # self.fail()
-
 
     def test_create_and_add_employee_with_duplicate_id(self):
         # TODO write this test and then remove the self.fail() statement
@@ -61,8 +59,6 @@ class TestPhoneManager(unittest.TestCase):
         # Asserts that the PhoneError is raised.
         with self.assertRaises(PhoneError):
             testAssigmentMgr.add_employee(testEmployee2)
-
-        # self.fail()
 
 
     def test_assign_phone_to_employee(self):
@@ -120,10 +116,19 @@ class TestPhoneManager(unittest.TestCase):
             testAssignmentMgr.assign(testphone1.id, testEmployee2)
 
 
-    # def test_assign_phone_to_the_employee_who_already_has_this_phone(self):
-    #     # TODO The method should not make any changes but NOT raise a PhoneError if a phone
-    #     # is assigned to the same user it is currenly assigned to.
-    # self.fail()
+    def test_assign_phone_to_the_employee_who_already_has_this_phone(self):
+        # TODO The method should not make any changes but NOT raise a PhoneError if a phone
+        # is assigned to the same user it is currenly assigned to.
+        testphone1 = Phone(1, 'Phone1', 'Model1')
+
+        testEmployee1 = Employee(1, 'Employee1')
+        testEmployee2 = Employee(2, 'Employee2')
+        # Assign only the testphone1
+        testAssignmentMgr = PhoneAssignments()
+        testAssignmentMgr.add_phone(testphone1)
+
+        # This asserts that the phone is under the same user already.
+        self.assertFalse(testAssignmentMgr.assign(testphone1.id, testEmployee1))
 
 
     def test_un_assign_phone(self):
@@ -135,8 +140,6 @@ class TestPhoneManager(unittest.TestCase):
             # This adds the data to the PhoneAssignments()
         testUnAssignMgr = PhoneAssignments()
 
-        # testUnAssignMgr.add_phone(testUnAssign)
-        # testUnAssignMgr.add_employee(testEmployee)
             # The phone gets assigned.
         testUnAssignMgr.assign(testUnAssign, testEmployee)
             # This asserts that the phone is un-assigned.

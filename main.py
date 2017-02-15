@@ -33,7 +33,8 @@ def main():
     assignments.assign(phone3.id, employee3)   # Assign phone 3 to employee 3
     assignments.assign(phone2.id, employee3)   # Reassign phone 3 to employee3. TODO this should fail; employee3 should not be able to have two phones
 
-    ''' This are the #TODO  list and need to be uncommented for to test the program '''
+    ''' This are the #TODO  list from the phone_manager.py
+        --> un_comment all below, to test the program '''
 
     #         ## add_employee -- This will throw an exception because the id is already in list.
     # employee2 = Employee(2, 'James')
@@ -49,7 +50,7 @@ def main():
     # assignments.assign(phone1.id, employee3)
     #
     #         ## This doesn't throw an exception.
-    # print(assignments.phone_info(employee3))
+    # print('\n',assignments.phone_info(employee3),'\n')
     #
     # print(assignments.phone_info(Employee(20, 'Name')))
 
